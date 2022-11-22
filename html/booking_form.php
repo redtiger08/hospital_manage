@@ -1,0 +1,76 @@
+ <!doctype html>
+ <html>
+ <head>
+     <meta charset="utf-8">
+	 <style>
+        table     { width:500px; text-align:center; padding: 20px; }
+        th        { background-color:gray; text-align:center; }
+        
+		.list      { background-color:gray; font-size:20px; }
+		
+        .room_max  { width: 110px; }
+        .room_num   { width:100px; }
+   
+		
+        a:link    { text-decoration:none; backgroundcolor:gray; width:500px; }
+	
+		
+		/*  헤더 전체 */
+    header {
+        width: 100%;
+        height: 180px;
+        display:flex;
+        background: silver;
+    }
+
+    </style>
+ </head>
+ <body>
+	<div style= "display: flex">
+			
+			
+	
+			<div>
+			<form action="booking.php" method="post">
+				<div class="list"> 예약 환자 등록 </div>
+				<table>
+					<tr>
+						<td>환자이름</td>
+						<td><input type="text" name="booking_name"></td>
+					</tr>
+					<tr>
+						<td>환자 주민번호</td>
+						<td><input type="text" name="patient_rrn"></td> <!-- rrn은 주민등록번호 약자 -->
+					</tr>
+					
+				
+					<tr>
+						<td>진료 의사 아이디</td>
+						<td><input type="text" name="doctor_id"></td>  
+					</tr>
+					
+					
+					
+					<tr>
+						<td>예약 날짜</td>
+						<td><input type="date" name="booking_date"></td>  
+					</tr>
+					<tr>
+						<td>예약번호 YYMMDDXX 형식</td>
+						<td><input type="text" name="booking_num"></td>
+					</tr>
+		
+		
+				</table>    
+		</div>
+		<div>
+			<?php
+			require("booking_dlist.php");
+		?>
+		</div>
+	 </div>
+      <input type="submit" value="확인"> 
+  </form>
+  
+  </body>
+  </html>

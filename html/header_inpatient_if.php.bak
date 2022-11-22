@@ -1,0 +1,29 @@
+<header>
+	
+			<div class="head-left">
+				<img class="head-logo" src="logo.png">
+			</div>    
+			
+			<div class="head-right">
+			
+				<div class="head-right-top">
+					
+					<a class="top-menu" href="login_main.php">Sign In/OUT</a>
+					<a class="top-menu" href="#">Coming Map</a>
+					<a class="top-menu" href="#" onclick="window.open('member_join_form.php', 'popup', 'width=500, height=200')">아이디 생성</a>
+				</div>            
+				
+				<div class="head-right-bottom">
+						
+						<a class="main-menu" onclick="window.open('inpatient_form.php', 'popup', 'width=1000, height=500')">입원 환자정보 입력</a>
+						<a class="main-menu" href="show_inpatient_if.php">입원 환자 정보 열람</a>
+						<a class="main-menu" onclick="window.open('room_setting_form.php', 'popup', 'width=1000, height=500')">입원실 등록</a>
+						<a class="main-menu" onclick="window.open('room_if.php', 'popup', 'width=1000, height=500')">입원실 확인</a>
+						<a class="main-menu" onclick="location.href='index.php'">홈으로 가기</a>
+						
+						<a class="main-menu" href="#"><?=$_SESSION["userName"]?>님 로그인</a>
+          
+				</div>            
+			</div>    
+	
+		</header>

@@ -1,0 +1,63 @@
+ <!doctype html>
+ <html>
+ <head>
+     <meta charset="utf-8">
+	    <style>
+        table     { width:500px; text-align:center; padding: 20px; }
+        th        { background-color:gray; text-align:center; }
+        
+		.list      { background-color:gray; font-size:20px; width:500px; }
+    
+
+    </style>
+ </head>
+ <body>
+		<div style= "display: flex">
+			<div>
+			
+				<div  class ="list"> 환자정보 등록 </div>
+				
+				<form action="patient_enroll.php" method="post">
+					<table>
+						<tr>
+							<td>환자이름</td>
+							<td><input type="text" name="patient_num"></td>
+						</tr>
+						<tr>
+							<td>환자 주민번호</td>
+							<td><input type="text" name="patient_rrn"></td> <!-- rrn은 주민등록번호 약자 -->
+						</tr>
+						<tr>
+							<td>차트 번호</td>
+							<td><input type="text" name="patient_chart"></td>  
+						</tr>
+						<tr>
+							<td>진단 내용</td>
+							<td><input type="text" name="patient_diagn"></td>
+						</tr>
+						<tr>
+							<td>진료 날짜</td>
+							<td><input type="date" name="patient_meet_date"></td>  
+						</tr>
+						<tr>
+							<td>입원유무</td>
+							<td><input type="text" name="patient_room"></td>  
+						</tr>
+						<tr>
+							<td>의사 이름</td>
+							<td><input type="text" name="doctor_name"></td>  
+						</tr>
+				
+					</table>    
+					<input type="submit" value="확인"> 
+				</form>
+			</div>	
+			<div>
+			<?php
+			require("booking_dlist.php");
+		?>
+		</div>
+		</div>	
+  
+  </body>
+  </html>

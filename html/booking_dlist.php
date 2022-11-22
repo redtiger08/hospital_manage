@@ -1,0 +1,61 @@
+ <table>
+		<tr>
+			<th class=""    >의사 이름    </th>
+			<th class=""    >의사 id</th>
+		</tr>
+<?php
+	$bid = empty($_REQUEST["bid"]) ? "" : $_REQUEST["bid"];  //bid : board ID 약자
+	
+	$numLines =5; //리스트 한페이지에 나올 행의 수 (글자수)
+	$numLinks = 3; //한페이지에 표시할 페이지 링크 갯수
+	
+	$page  = empty($_REQUEST["page"]) ? 1 : $_REQUEST["page"];
+	$start = ($page - 1) *$numLines;
+
+	require("db_connect.php");
+	$query = $db->query("select * from doctor$bid order by doctor_rrn desc limit $start, $numLines");
+	while ($row = $query->fetch()) {
+?>		
+	<tr>	
+		<td><?=$row["doctor_name"]?></td>
+        <td><?=$row["doctor_id"]?></td>
+	</tr>		
+<?php
+		}
+?>
+	</table> 
+	<br>
+		<?php
+		$firstLink = floor(($page -1) / $numLinks) *$numLinks  + 1;
+		$lastLink  = $firstLink + $numLinks -1;
+		
+		$numRecords = $db->query("select count(*) from doctor$bid")->fetchColumn();
+		$numPages = ceil($numRecords / $numLines); //ceil(게시판테이블의 레코드수 /$numLines)
+		if ($lastLink > $numPages){
+			$lastLink = $numPages;
+		}
+?>
+<div style="width:680px; text-align:center;">
+<?php
+		if ($firstLink > 1){
+?>	
+		<a href="booking_form.php?bid=<?=$bid?>&page=<?=$firstLink - $numLinks?>">이전</a>
+<?php
+		}
+		for ($i = $firstLink; $i <= $lastLink; $i++) {
+ ?>
+ 
+		<a href ="booking_form.php?bid=<?=$bid?>&page=<?=$i?>"><?=($i ==$page) ? "<u>$i</u>" : $i?></a>
+	
+ <?php
+		}
+		
+		if ($lastLink < $numPages){
+	
+ ?>
+		<a href="booking_form.php?bid=<?=$bid?>&page=<?=$firstLink +$numLinks?>">다음</a>
+<?php
+		}
+?>
+</div>
+<br>
